@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\WelcomeController;
 
 Route::resource('photos', PhotoController::class);
 Route::get('/', HomeController::class);
@@ -17,3 +18,8 @@ Route::resource('photos', PhotoController::class)->except([
     'create', 'store', 'update', 'destroy'
 ]);
 
+Route::get('/greeting', function () {
+	return view('blog.hello', ['name' => 'Ariq']);
+});
+
+Route::get('/greeting', [WelcomeController::class, 'greeting']);
